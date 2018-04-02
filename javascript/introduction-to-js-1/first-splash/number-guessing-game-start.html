@@ -41,8 +41,21 @@
     </div>
 
     <script>
+    var randomNumber = Math.floor(Math.random()*100) + 1;// output randomNumber
+    
+    var guesses = document.querySelector('.guesses');// store guesses
+    var lastResult = document.querySelector('.lastResult');
+    var lowOrHi = document.querySelector('.lowOrHi');// say to user if number hi or low  compared with correct number
 
-      // Your JavaScript goes here
+    var guessSubmit = document.querySelector('guessSubmit');// when user click on submit
+    var guessField = document.querySelector('.guessField');// input field 
+
+    var guessCount = 1;// counter to ten
+    var resetButton;// reset the game to start
+
+    function checkGuess(){
+      alert('I am a placeholder');
+    }  
 
     </script>
   </body>

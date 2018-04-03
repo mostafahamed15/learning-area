@@ -47,15 +47,46 @@
     var lastResult = document.querySelector('.lastResult');
     var lowOrHi = document.querySelector('.lowOrHi');// say to user if number hi or low  compared with correct number
 
-    var guessSubmit = document.querySelector('guessSubmit');// when user click on submit
+    var guessSubmit = document.querySelector('.guessSubmit');// when user click on submit
     var guessField = document.querySelector('.guessField');// input field 
 
     var guessCount = 1;// counter to ten
     var resetButton;// reset the game to start
-
+    guessField.focus();
     function checkGuess(){
-      alert('I am a placeholder');
-    }  
+      var userGuess = Number(guessField.value);
+      if (guessCount === 1){
+        guesses.textContent = 'previous guesses: ';
+      }
+      guesses.textContent += userGuess  + '';
+
+
+      if (userGuess === randomNumber){
+        lastResult.textContent = 'Congratulations! You got it right';
+        lastResult.style.backgroundColor = 'green';
+        lowOrHi.textContent = '';
+        setGameOver();
+      } else if (guessCount === 10){
+        lastResult.textContent = '!!!GAME OVER!!!';
+        lowOrHi.textContent = '';
+        setGameOver();
+      } else {
+        lastResult.textContent = 'Wrong!';
+        lastResult.style.backgroundColor = 'red';
+        if (userGuess < randomNumber){
+          lowOrHi.textContent = 'Last Guess was too low!';
+        } else if( userGuess > randomNumber){
+          lowOrHi.textContent = 'Last guess was too high!';
+        }
+      }
+
+      guessCount++;
+      guessField.value = '';
+      guessField.focus();
+      
+    }
+    guessSubmit.addEventListener('click', checkGuess);
+      
 
     </script>
   </body>
